@@ -10,7 +10,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'My Weather App',
       home: LoadingScreen(),
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+        accentColor: Colors.white,
+      ),
     );
   }
 }
