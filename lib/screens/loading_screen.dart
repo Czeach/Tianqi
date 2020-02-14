@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+//import 'package:http/http.dart'  as http;
+import 'package:http/http.dart' as http;
+//import 'dart:convert';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -6,8 +9,22 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
+  //To get the data from the server to our UI
+
+  void getData() async {
+    http.Response response = await http.get('http://api.openweathermap.org/data/2.5/forecast?q=Port%20Harcourt,NG&appid=100ef8029913a78ceeb3129acb20b497#');
+    if (response.statusCode == 200) {
+      String data = response.body;
+    } else {
+      print(response.statusCode);
+    }
+  
+  }
+
   @override
   Widget build(BuildContext context) {
+    getData();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[900],
@@ -55,7 +72,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, top: 0.0, bottom: 0.0),
                           child: Text(
-                            '30',
+                            '30\u00B0',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 120,
